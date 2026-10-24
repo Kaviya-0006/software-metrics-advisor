@@ -1,0 +1,95 @@
+// Prisma schema for the Software Metrics Advisor.
+//
+// MIGRATION NOTES (SQLAlchemy -> Prisma)
+//  * Model fields are camelCase in TypeScript; @map/@@map keep the SAME
+//    snake_case column/table names the Python backend used, so both
+//    generations of the app describe the same tables.
+//  * SQLite has no native JSON type in Prisma's connector for older
+//    versions, so JSON payloads (categoryScores, riskFactors, metricsJson)
+//    are stored as TEXT and parsed in the repository layer, which is exactly
+//    how SQLAlchemy's JSON type persisted them.
+//  * Reusing an existing Python-written database: upload_date was written as
+//    "YYYY-MM-DD HH:MM:SS.ffffff". Convert it to ISO-8601 first (and test on
+//    a COPY), because Prisma parses DateTime columns itself:
+//      UPDATE projects SET upload_date = replace(upload_date, ' ', 'T') || 'Z';
+//  * MetricSnapshot is new. The Python app kept history by inserting one
+//    `projects` row per upload and grouping by name; snapshots make
+//    "metrics over time" a first-class table.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// One analysed upload.
+model Project {
+  id             Int              @id @default(autoincrement())
+  name           String
+  uploadDate     DateTime?        @default(now()) @map("upload_date")
+  status         String?          @default("pending") // pending | analyzed | failed
+  languages      String? // comma-separated, e.g. "python,java"
+  filesAnalyzed  Int?             @map("files_analyzed")
+  totalClasses   Int?             @map("total_classes")
+  totalFunctions Int?             @map("total_functions")
+  totalLoc       Int?             @map("total_loc")
+  healthScore    Float?           @map("health_score")
+  healthStatus   String?          @map("health_status") // CRITICAL | POOR | NEEDS_ATTENTION | HEALTHY | EXCELLENT
+  categoryScores String?          @map("category_scores") // JSON text
+  modules        Module[]
+  snapshots      MetricSnapshot[]
+
+  @@index([name])
+  @@map("projects")
+}
+
+/// One analysed source file inside a project.
+model Module {
+  id                   Int              @id @default(autoincrement())
+  projectId            Int              @map("project_id")
+  project              Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  fileName             String           @map("file_name")
+  filePath             String           @map("file_path")
+  language             String
+  locTotal             Int?             @map("loc_total")
+  locCode              Int?             @map("loc_code")
+  locComments          Int?             @map("loc_comments")
+  locBlank             Int?             @map("loc_blank")
+  complexityTotal      Int?             @map("complexity_total")
+  complexityAverage    Float?           @map("complexity_average")
+  complexityMaximum    Int?             @map("complexity_maximum")
+  maintainabilityIndex Float?           @map("maintainability_index")
+  riskScore            Float?           @map("risk_score")
+  riskLevel            String?          @map("risk_level") // LOW | MEDIUM | HIGH | CRITICAL
+  riskFactors          String?          @map("risk_factors") // JSON text: string[]
+  parseError           String?          @map("parse_error")
+  metricsJson          String?          @map("metrics_json") // full nested result, JSON text
+  snapshots            MetricSnapshot[]
+
+  @@index([projectId])
+  @@map("modules")
+}
+
+/// Append-only point-in-time metrics. moduleId = null means a project-level rollup.
+model MetricSnapshot {
+  id                   Int      @id @default(autoincrement())
+  projectId            Int      @map("project_id")
+  project              Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  moduleId             Int?     @map("module_id")
+  module               Module?  @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  capturedAt           DateTime @default(now()) @map("captured_at")
+  locTotal             Int?     @map("loc_total")
+  locCode              Int?     @map("loc_code")
+  complexityTotal      Int?     @map("complexity_total")
+  complexityMaximum    Int?     @map("complexity_maximum")
+  maintainabilityIndex Float?   @map("maintainability_index")
+  riskScore            Float?   @map("risk_score")
+  healthScore          Float?   @map("health_score")
+
+  @@index([projectId, capturedAt])
+  @@index([moduleId])
+  @@map("metric_snapshots")
+}
