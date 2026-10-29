@@ -1,0 +1,29 @@
+# Environment
+.env
+backend/.env
+frontend/.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+*.egg-info/
+
+# Database
+*.db
+
+# Node
+node_modules/
+dist/
+
+# Uploads / reports (keep the folders, ignore their contents)
+uploads/*
+!uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

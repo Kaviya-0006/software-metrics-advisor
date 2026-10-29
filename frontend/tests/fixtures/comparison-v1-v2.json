@@ -1,0 +1,1401 @@
+{
+ "available": true,
+ "comparison": {
+  "after": {
+   "health_score": 60.0,
+   "health_status": "GOOD",
+   "is_backfilled": false,
+   "scan_id": 12,
+   "scanned_at": "2026-10-02T10:00:00Z",
+   "version_number": 2
+  },
+  "architecture": {
+   "available": true,
+   "calls": {
+    "added": [
+     {
+      "evidence": [],
+      "key": "POST /api/missing"
+     }
+    ],
+    "removed": [],
+    "total": {
+     "absolute_change": 1.0,
+     "current": 2.0,
+     "direction": "changed",
+     "percent_change": 100.0,
+     "percent_note": null,
+     "previous": 1.0
+    }
+   },
+   "endpoints": {
+    "added": [
+     {
+      "evidence": [],
+      "key": "DELETE /api/users/{id}"
+     }
+    ],
+    "removed": [],
+    "total": {
+     "absolute_change": 1.0,
+     "current": 2.0,
+     "direction": "changed",
+     "percent_change": 100.0,
+     "percent_note": null,
+     "previous": 1.0
+    }
+   },
+   "improvements": [],
+   "layers": [
+    {
+     "files": {
+      "absolute_change": 0.0,
+      "current": 1.0,
+      "direction": "unchanged",
+      "percent_change": 0.0,
+      "percent_note": null,
+      "previous": 1.0
+     },
+     "layer": "frontend",
+     "loc": {
+      "absolute_change": 0.0,
+      "current": 5.0,
+      "direction": "unchanged",
+      "percent_change": 0.0,
+      "percent_note": null,
+      "previous": 5.0
+     },
+     "status": "present"
+    },
+    {
+     "files": {
+      "absolute_change": 1.0,
+      "current": 2.0,
+      "direction": "changed",
+      "percent_change": 100.0,
+      "percent_note": null,
+      "previous": 1.0
+     },
+     "layer": "backend",
+     "loc": {
+      "absolute_change": 0.0,
+      "current": 10.0,
+      "direction": "unchanged",
+      "percent_change": 0.0,
+      "percent_note": null,
+      "previous": 10.0
+     },
+     "status": "present"
+    }
+   ],
+   "matched": {
+    "added": [],
+    "removed": [],
+    "total": {
+     "absolute_change": 0.0,
+     "current": 1.0,
+     "direction": "unchanged",
+     "percent_change": 0.0,
+     "percent_note": null,
+     "previous": 1.0
+    }
+   },
+   "note": "API findings are static-analysis observations matched by 'METHOD /path'; they are hints, not runtime facts.",
+   "project_type": {
+    "changed": false,
+    "current": "full-stack",
+    "previous": "full-stack"
+   },
+   "regressions": [
+    {
+     "detail": "A frontend API call with no matching backend endpoint was found in the new version.",
+     "evidence": [
+      {
+       "detail": "POST /api/missing",
+       "file": "frontend/api.js",
+       "line": 2,
+       "side": "frontend"
+      }
+     ],
+     "id": "arch:unmatched:POST /api/missing",
+     "scope": "architecture",
+     "severity": "medium",
+     "title": "New potential integration issue: POST /api/missing"
+    },
+    {
+     "detail": "No frontend consumer was found for this endpoint in the new version (other clients may use it).",
+     "evidence": [
+      {
+       "detail": "DELETE /api/users/{id}",
+       "file": "backend/main.py",
+       "line": 9,
+       "side": "backend"
+      }
+     ],
+     "id": "arch:unused:DELETE /api/users/{id}",
+     "scope": "architecture",
+     "severity": "low",
+     "title": "Newly potentially unused endpoint: DELETE /api/users/{id}"
+    }
+   ],
+   "uncertain": {
+    "absolute_change": 0.0,
+    "current": 0.0,
+    "direction": "unchanged",
+    "percent_change": null,
+    "percent_note": "previous value is 0",
+    "previous": 0.0
+   },
+   "unmatched_calls": {
+    "added": [
+     {
+      "evidence": [
+       {
+        "detail": "POST /api/missing",
+        "file": "frontend/api.js",
+        "line": 2,
+        "side": "frontend"
+       }
+      ],
+      "key": "POST /api/missing"
+     }
+    ],
+    "removed": [],
+    "total": {
+     "absolute_change": 1.0,
+     "current": 1.0,
+     "direction": "regressed",
+     "percent_change": null,
+     "percent_note": "undefined (previous value is 0)",
+     "previous": 0.0
+    }
+   },
+   "unused_endpoints": {
+    "added": [
+     {
+      "evidence": [
+       {
+        "detail": "DELETE /api/users/{id}",
+        "file": "backend/main.py",
+        "line": 9,
+        "side": "backend"
+       }
+      ],
+      "key": "DELETE /api/users/{id}"
+     }
+    ],
+    "removed": [],
+    "total": {
+     "absolute_change": 1.0,
+     "current": 1.0,
+     "direction": "regressed",
+     "percent_change": null,
+     "percent_note": "undefined (previous value is 0)",
+     "previous": 0.0
+    }
+   }
+  },
+  "before": {
+   "health_score": 70.0,
+   "health_status": "GOOD",
+   "is_backfilled": false,
+   "scan_id": 11,
+   "scanned_at": "2026-10-01T10:00:00Z",
+   "version_number": 1
+  },
+  "files": {
+   "items": [
+    {
+     "changes": {
+      "cohesion": {
+       "absolute_change": 0.0,
+       "current": 1.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 1.0
+      },
+      "complexity_maximum": {
+       "absolute_change": 0.0,
+       "current": 4.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 4.0
+      },
+      "complexity_total": {
+       "absolute_change": 0.0,
+       "current": 10.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 10.0
+      },
+      "coupling": {
+       "absolute_change": 0.0,
+       "current": 2.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 2.0
+      },
+      "duplication_percentage": {
+       "absolute_change": 0.0,
+       "current": 0.0,
+       "direction": "unchanged",
+       "percent_change": null,
+       "percent_note": "previous value is 0",
+       "previous": 0.0
+      },
+      "loc_total": {
+       "absolute_change": 0.0,
+       "current": 50.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 50.0
+      },
+      "maintainability_index": {
+       "absolute_change": 15.0,
+       "current": 75.0,
+       "direction": "improved",
+       "percent_change": 25.0,
+       "percent_note": null,
+       "previous": 60.0
+      },
+      "risk_score": {
+       "absolute_change": -20.0,
+       "current": 25.0,
+       "direction": "improved",
+       "percent_change": -44.44,
+       "percent_note": null,
+       "previous": 45.0
+      }
+     },
+     "current_path": "app/clean.py",
+     "current_risk_level": "LOW",
+     "language": "python",
+     "loc_total": 50,
+     "notes": [],
+     "path": "app/clean.py",
+     "previous_path": "app/clean.py",
+     "previous_risk_level": "MEDIUM",
+     "risk_level": "LOW",
+     "risk_score": 25.0,
+     "signals": [
+      {
+       "absolute_change": 15.0,
+       "current": 75.0,
+       "direction": "improvement",
+       "message": "Maintainability index rose from 60 to 75 (+25.0%)",
+       "metric": "maintainability_index",
+       "percent_change": 25.0,
+       "previous": 60.0,
+       "rule": "maintainability_index"
+      },
+      {
+       "absolute_change": -20.0,
+       "current": 25.0,
+       "direction": "improvement",
+       "message": "Risk score fell from 45 to 25 (-44.4%)",
+       "metric": "risk_score",
+       "percent_change": -44.44,
+       "previous": 45.0,
+       "rule": "risk_score"
+      },
+      {
+       "current": "LOW",
+       "direction": "improvement",
+       "message": "Risk level fell from MEDIUM to LOW",
+       "metric": "risk_level",
+       "previous": "MEDIUM",
+       "rule": "risk_level"
+      }
+     ],
+     "status": "changed",
+     "verdict": "improved",
+     "verification": "content-hash"
+    },
+    {
+     "changes": {
+      "cohesion": {
+       "absolute_change": 0.0,
+       "current": 1.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 1.0
+      },
+      "complexity_maximum": {
+       "absolute_change": 8.0,
+       "current": 12.0,
+       "direction": "regressed",
+       "percent_change": 200.0,
+       "percent_note": null,
+       "previous": 4.0
+      },
+      "complexity_total": {
+       "absolute_change": 20.0,
+       "current": 30.0,
+       "direction": "regressed",
+       "percent_change": 200.0,
+       "percent_note": null,
+       "previous": 10.0
+      },
+      "coupling": {
+       "absolute_change": 0.0,
+       "current": 2.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 2.0
+      },
+      "duplication_percentage": {
+       "absolute_change": 0.0,
+       "current": 0.0,
+       "direction": "unchanged",
+       "percent_change": null,
+       "percent_note": "previous value is 0",
+       "previous": 0.0
+      },
+      "loc_total": {
+       "absolute_change": 0.0,
+       "current": 50.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 50.0
+      },
+      "maintainability_index": {
+       "absolute_change": 0.0,
+       "current": 70.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 70.0
+      },
+      "risk_score": {
+       "absolute_change": 28.0,
+       "current": 48.0,
+       "direction": "regressed",
+       "percent_change": 140.0,
+       "percent_note": null,
+       "previous": 20.0
+      }
+     },
+     "current_path": "app/hot.py",
+     "current_risk_level": "MEDIUM",
+     "language": "python",
+     "loc_total": 50,
+     "notes": [],
+     "path": "app/hot.py",
+     "previous_path": "app/hot.py",
+     "previous_risk_level": "LOW",
+     "risk_level": "MEDIUM",
+     "risk_score": 48.0,
+     "signals": [
+      {
+       "absolute_change": 20.0,
+       "current": 30.0,
+       "direction": "regression",
+       "message": "Total complexity rose from 10 to 30 (+200.0%)",
+       "metric": "complexity_total",
+       "percent_change": 200.0,
+       "previous": 10.0,
+       "rule": "complexity_total"
+      },
+      {
+       "absolute_change": 8.0,
+       "current": 12.0,
+       "direction": "regression",
+       "message": "Most complex function rose from 4 to 12 (+200.0%)",
+       "metric": "complexity_maximum",
+       "percent_change": 200.0,
+       "previous": 4.0,
+       "rule": "complexity_maximum"
+      },
+      {
+       "absolute_change": 28.0,
+       "current": 48.0,
+       "direction": "regression",
+       "message": "Risk score rose from 20 to 48 (+140.0%)",
+       "metric": "risk_score",
+       "percent_change": 140.0,
+       "previous": 20.0,
+       "rule": "risk_score"
+      },
+      {
+       "current": "MEDIUM",
+       "direction": "regression",
+       "message": "Risk level rose from LOW to MEDIUM",
+       "metric": "risk_level",
+       "previous": "LOW",
+       "rule": "risk_level"
+      }
+     ],
+     "status": "changed",
+     "verdict": "regressed",
+     "verification": "content-hash"
+    },
+    {
+     "changes": {
+      "cohesion": {
+       "absolute_change": 0.0,
+       "current": 1.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 1.0
+      },
+      "complexity_maximum": {
+       "absolute_change": 0.0,
+       "current": 4.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 4.0
+      },
+      "complexity_total": {
+       "absolute_change": 0.0,
+       "current": 10.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 10.0
+      },
+      "coupling": {
+       "absolute_change": 0.0,
+       "current": 2.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 2.0
+      },
+      "duplication_percentage": {
+       "absolute_change": 0.0,
+       "current": 0.0,
+       "direction": "unchanged",
+       "percent_change": null,
+       "percent_note": "previous value is 0",
+       "previous": 0.0
+      },
+      "loc_total": {
+       "absolute_change": 0.0,
+       "current": 50.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 50.0
+      },
+      "maintainability_index": {
+       "absolute_change": 0.0,
+       "current": 70.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 70.0
+      },
+      "risk_score": {
+       "absolute_change": 10.0,
+       "current": 65.0,
+       "direction": "regressed",
+       "percent_change": 18.18,
+       "percent_note": null,
+       "previous": 55.0
+      }
+     },
+     "current_path": "app/risky.py",
+     "current_risk_level": "HIGH",
+     "language": "python",
+     "loc_total": 50,
+     "notes": [],
+     "path": "app/risky.py",
+     "previous_path": "app/risky.py",
+     "previous_risk_level": "MEDIUM",
+     "risk_level": "HIGH",
+     "risk_score": 65.0,
+     "signals": [
+      {
+       "absolute_change": 10.0,
+       "current": 65.0,
+       "direction": "regression",
+       "message": "Risk score rose from 55 to 65 (+18.2%)",
+       "metric": "risk_score",
+       "percent_change": 18.18,
+       "previous": 55.0,
+       "rule": "risk_score"
+      },
+      {
+       "current": "HIGH",
+       "direction": "regression",
+       "message": "Risk level rose from MEDIUM to HIGH",
+       "metric": "risk_level",
+       "previous": "MEDIUM",
+       "rule": "risk_level"
+      }
+     ],
+     "status": "changed",
+     "verdict": "regressed",
+     "verification": "content-hash"
+    },
+    {
+     "changes": {
+      "cohesion": {
+       "absolute_change": 0.0,
+       "current": 1.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 1.0
+      },
+      "complexity_maximum": {
+       "absolute_change": 0.0,
+       "current": 4.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 4.0
+      },
+      "complexity_total": {
+       "absolute_change": 0.0,
+       "current": 10.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 10.0
+      },
+      "coupling": {
+       "absolute_change": 4.0,
+       "current": 6.0,
+       "direction": "regressed",
+       "percent_change": 200.0,
+       "percent_note": null,
+       "previous": 2.0
+      },
+      "duplication_percentage": {
+       "absolute_change": 0.0,
+       "current": 0.0,
+       "direction": "unchanged",
+       "percent_change": null,
+       "percent_note": "previous value is 0",
+       "previous": 0.0
+      },
+      "loc_total": {
+       "absolute_change": 0.0,
+       "current": 50.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 50.0
+      },
+      "maintainability_index": {
+       "absolute_change": 0.0,
+       "current": 70.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 70.0
+      },
+      "risk_score": {
+       "absolute_change": 0.0,
+       "current": 20.0,
+       "direction": "unchanged",
+       "percent_change": 0.0,
+       "percent_note": null,
+       "previous": 20.0
+      }
+     },
+     "current_path": "app/tight.py",
+     "current_risk_level": "LOW",
+     "language": "python",
+     "loc_total": 50,
+     "notes": [],
+     "path": "app/tight.py",
+     "previous_path": "app/tight.py",
+     "previous_risk_level": "LOW",
+     "risk_level": "LOW",
+     "risk_score": 20.0,
+     "signals": [
+      {
+       "absolute_change": 4.0,
+       "current": 6.0,
+       "direction": "regression",
+       "message": "Coupling rose from 2 to 6 (+200.0%)",
+       "metric": "coupling",
+       "percent_change": 200.0,
+       "previous": 2.0,
+       "rule": "coupling"
+      }
+     ],
+     "status": "changed",
+     "verdict": "regressed",
+     "verification": "content-hash"
+    },
+    {
+     "changes": {},
+     "current_path": "app/brand_new.py",
+     "current_risk_level": "CRITICAL",
+     "language": "python",
+     "loc_total": 50,
+     "notes": [],
+     "path": "app/brand_new.py",
+     "previous_path": null,
+     "previous_risk_level": null,
+     "risk_level": "CRITICAL",
+     "risk_score": 90.0,
+     "signals": [
+      {
+       "direction": "regression",
+       "message": "New file starts at CRITICAL risk",
+       "rule": "new_high_risk_file"
+      }
+     ],
+     "status": "added",
+     "verdict": null,
+     "verification": null
+    },
+    {
+     "changes": {},
+     "current_path": "app/new_name.py",
+     "current_risk_level": "LOW",
+     "language": "python",
+     "loc_total": 80,
+     "notes": [
+      "Possible rename of app/old_name.py (high confidence: identical content hash). Counted as an added file; this is not a confirmed rename."
+     ],
+     "path": "app/new_name.py",
+     "possible_rename_of": {
+      "confidence": "high",
+      "path": "app/old_name.py",
+      "reason": "identical content hash"
+     },
+     "previous_path": null,
+     "previous_risk_level": null,
+     "risk_level": "LOW",
+     "risk_score": 20.0,
+     "signals": [],
+     "status": "added",
+     "verdict": null,
+     "verification": null
+    },
+    {
+     "changes": {},
+     "current_path": "svc/Api.java",
+     "current_risk_level": "HIGH",
+     "language": "java",
+     "loc_total": 50,
+     "notes": [],
+     "path": "svc/Api.java",
+     "previous_path": null,
+     "previous_risk_level": null,
+     "risk_level": "HIGH",
+     "risk_score": 70.0,
+     "signals": [
+      {
+       "direction": "regression",
+       "message": "New file starts at HIGH risk",
+       "rule": "new_high_risk_file"
+      }
+     ],
+     "status": "added",
+     "verdict": null,
+     "verification": null
+    },
+    {
+     "changes": {},
+     "current_path": null,
+     "current_risk_level": null,
+     "language": "python",
+     "loc_total": 50,
+     "notes": [],
+     "path": "app/deleted.py",
+     "previous_path": "app/deleted.py",
+     "previous_risk_level": "CRITICAL",
+     "risk_level": "CRITICAL",
+     "risk_score": 85.0,
+     "signals": [
+      {
+       "direction": "improvement",
+       "message": "File removed (CRITICAL risk)",
+       "rule": "high_risk_file_removed"
+      }
+     ],
+     "status": "removed",
+     "verdict": null,
+     "verification": null
+    },
+    {
+     "changes": {},
+     "current_path": null,
+     "current_risk_level": null,
+     "language": "python",
+     "loc_total": 80,
+     "notes": [
+      "Possibly renamed to app/new_name.py (high confidence: identical content hash). Counted as a removed file; this is not a confirmed rename."
+     ],
+     "path": "app/old_name.py",
+     "possible_rename_to": {
+      "confidence": "high",
+      "path": "app/new_name.py",
+      "reason": "identical content hash"
+     },
+     "previous_path": "app/old_name.py",
+     "previous_risk_level": "LOW",
+     "risk_level": "LOW",
+     "risk_score": 20.0,
+     "signals": [],
+     "status": "removed",
+     "verdict": null,
+     "verification": null
+    },
+    {
+     "changes": {},
+     "current_path": "web/app.ts",
+     "current_risk_level": "LOW",
+     "language": "typescript",
+     "loc_total": 50,
+     "notes": [
+      "No tracked metric changed, but this file's content cannot be verified as identical (no stored content hash for one or both versions)."
+     ],
+     "path": "web/app.ts",
+     "previous_path": "web/app.ts",
+     "previous_risk_level": "LOW",
+     "risk_level": "LOW",
+     "risk_score": 20.0,
+     "signals": [],
+     "status": "unverified",
+     "verdict": null,
+     "verification": "metrics-only"
+    },
+    {
+     "changes": {},
+     "current_path": "app/broken.py",
+     "current_risk_level": "LOW",
+     "language": "python",
+     "loc_total": 50,
+     "notes": [],
+     "path": "app/broken.py",
+     "previous_path": "app/broken.py",
+     "previous_risk_level": "LOW",
+     "risk_level": "LOW",
+     "risk_score": 20.0,
+     "signals": [],
+     "status": "unchanged",
+     "verdict": null,
+     "verification": "content-hash"
+    },
+    {
+     "changes": {},
+     "current_path": "app/stable.py",
+     "current_risk_level": "LOW",
+     "language": "python",
+     "loc_total": 50,
+     "notes": [],
+     "path": "app/stable.py",
+     "previous_path": "app/stable.py",
+     "previous_risk_level": "LOW",
+     "risk_level": "LOW",
+     "risk_score": 20.0,
+     "signals": [],
+     "status": "unchanged",
+     "verdict": null,
+     "verification": "content-hash"
+    }
+   ],
+   "path_alignment": {
+    "current_root_ignored": null,
+    "matched_paths": 7,
+    "notes": [],
+    "previous_root_ignored": null,
+    "root_changed": false
+   },
+   "possible_renames": [
+    {
+     "confidence": "high",
+     "from": "app/old_name.py",
+     "reason": "identical content hash",
+     "to": "app/new_name.py"
+    }
+   ],
+   "summary": {
+    "added": 3,
+    "changed": 4,
+    "files_with_missing_data": 0,
+    "possible_renames": {
+     "high": 1,
+     "low": 0,
+     "medium": 0
+    },
+    "removed": 2,
+    "total_current": 10,
+    "total_previous": 9,
+    "unchanged": 2,
+    "unverified": 1,
+    "verdicts": {
+     "improved": 1,
+     "mixed": 0,
+     "neutral": 0,
+     "regressed": 3
+    }
+   }
+  },
+  "improvements": [
+   {
+    "detail": "Maintainability index rose from 60 to 75 (+25.0%); Risk score fell from 45 to 25 (-44.4%); Risk level fell from MEDIUM to LOW",
+    "id": "file:app/clean.py",
+    "language": "python",
+    "path": "app/clean.py",
+    "rules": [
+     "maintainability_index",
+     "risk_score",
+     "risk_level"
+    ],
+    "scope": "file",
+    "severity": "high",
+    "title": "app/clean.py improved"
+   },
+   {
+    "detail": "Removed; it had risk level CRITICAL (no rename candidate found, but renames cannot be ruled out)",
+    "id": "removed:app/deleted.py",
+    "language": "python",
+    "path": "app/deleted.py",
+    "rules": [
+     "high_risk_file_removed"
+    ],
+    "scope": "file",
+    "severity": "medium",
+    "title": "High-risk file removed: app/deleted.py"
+   }
+  ],
+  "project": {
+   "categories": {
+    "complexity": {
+     "absolute_change": -10.0,
+     "current": 50.0,
+     "direction": "regressed",
+     "percent_change": -16.67,
+     "percent_note": null,
+     "previous": 60.0
+    },
+    "documentation": {
+     "absolute_change": -10.0,
+     "current": 30.0,
+     "direction": "regressed",
+     "percent_change": -25.0,
+     "percent_note": null,
+     "previous": 40.0
+    },
+    "testing": {
+     "absolute_change": null,
+     "current": null,
+     "direction": "unavailable",
+     "percent_change": null,
+     "percent_note": "not available (both value not recorded)",
+     "previous": null
+    }
+   },
+   "languages": [
+    {
+     "files": {
+      "absolute_change": 1.0,
+      "current": 1.0,
+      "direction": "changed",
+      "percent_change": null,
+      "percent_note": "undefined (previous value is 0)",
+      "previous": 0.0
+     },
+     "language": "java",
+     "loc": {
+      "absolute_change": 20.0,
+      "current": 20.0,
+      "direction": "changed",
+      "percent_change": null,
+      "percent_note": "undefined (previous value is 0)",
+      "previous": 0.0
+     },
+     "status": "added"
+    },
+    {
+     "files": {
+      "absolute_change": 0.0,
+      "current": 8.0,
+      "direction": "unchanged",
+      "percent_change": 0.0,
+      "percent_note": null,
+      "previous": 8.0
+     },
+     "language": "python",
+     "loc": {
+      "absolute_change": 40.0,
+      "current": 440.0,
+      "direction": "changed",
+      "percent_change": 10.0,
+      "percent_note": null,
+      "previous": 400.0
+     },
+     "status": "present"
+    }
+   ],
+   "metrics": {
+    "average_complexity": {
+     "absolute_change": 1.5,
+     "current": 4.5,
+     "direction": "regressed",
+     "percent_change": 50.0,
+     "percent_note": null,
+     "previous": 3.0,
+     "significant": true
+    },
+    "average_maintainability": {
+     "absolute_change": -6.0,
+     "current": 64.0,
+     "direction": "regressed",
+     "percent_change": -8.57,
+     "percent_note": null,
+     "previous": 70.0,
+     "significant": true
+    },
+    "average_risk_score": {
+     "absolute_change": 11.0,
+     "current": 41.0,
+     "direction": "regressed",
+     "percent_change": 36.67,
+     "percent_note": null,
+     "previous": 30.0,
+     "significant": true
+    },
+    "comment_ratio_percent": {
+     "absolute_change": 0.0,
+     "current": 15.0,
+     "direction": "unchanged",
+     "percent_change": 0.0,
+     "percent_note": null,
+     "previous": 15.0,
+     "significant": false
+    },
+    "documentation_score": {
+     "absolute_change": -10.0,
+     "current": 30.0,
+     "direction": "regressed",
+     "percent_change": -25.0,
+     "percent_note": null,
+     "previous": 40.0,
+     "significant": true
+    },
+    "duplicated_lines": {
+     "absolute_change": 0.0,
+     "current": 20.0,
+     "direction": "unchanged",
+     "percent_change": 0.0,
+     "percent_note": null,
+     "previous": 20.0,
+     "significant": false
+    },
+    "duplication_percentage": {
+     "absolute_change": 3.0,
+     "current": 7.0,
+     "direction": "regressed",
+     "percent_change": 75.0,
+     "percent_note": null,
+     "previous": 4.0,
+     "significant": true
+    },
+    "files_analyzed": {
+     "absolute_change": 1.0,
+     "current": 9.0,
+     "direction": "changed",
+     "percent_change": 12.5,
+     "percent_note": null,
+     "previous": 8.0,
+     "significant": false
+    },
+    "health_score": {
+     "absolute_change": -10.0,
+     "current": 60.0,
+     "direction": "regressed",
+     "percent_change": -14.29,
+     "percent_note": null,
+     "previous": 70.0,
+     "significant": true
+    },
+    "high_risk_modules": {
+     "absolute_change": 3.0,
+     "current": 3.0,
+     "direction": "regressed",
+     "percent_change": null,
+     "percent_note": "undefined (previous value is 0)",
+     "previous": 0.0,
+     "significant": true
+    },
+    "max_risk_score": {
+     "absolute_change": 0.0,
+     "current": 50.0,
+     "direction": "unchanged",
+     "percent_change": 0.0,
+     "percent_note": null,
+     "previous": 50.0,
+     "significant": false
+    },
+    "total_classes": {
+     "absolute_change": 0.0,
+     "current": 8.0,
+     "direction": "unchanged",
+     "percent_change": 0.0,
+     "percent_note": null,
+     "previous": 8.0,
+     "significant": false
+    },
+    "total_functions": {
+     "absolute_change": 0.0,
+     "current": 32.0,
+     "direction": "unchanged",
+     "percent_change": 0.0,
+     "percent_note": null,
+     "previous": 32.0,
+     "significant": false
+    },
+    "total_loc": {
+     "absolute_change": 60.0,
+     "current": 460.0,
+     "direction": "changed",
+     "percent_change": 15.0,
+     "percent_note": null,
+     "previous": 400.0,
+     "significant": false
+    }
+   },
+   "risk_distribution": {
+    "available": true,
+    "levels": {
+     "critical": {
+      "absolute_change": 1.0,
+      "current": 1.0,
+      "direction": "regressed",
+      "percent_change": null,
+      "percent_note": "undefined (previous value is 0)",
+      "previous": 0.0
+     },
+     "high": {
+      "absolute_change": 2.0,
+      "current": 2.0,
+      "direction": "regressed",
+      "percent_change": null,
+      "percent_note": "undefined (previous value is 0)",
+      "previous": 0.0
+     },
+     "low": {
+      "absolute_change": -2.0,
+      "current": 4.0,
+      "direction": "regressed",
+      "percent_change": -33.33,
+      "percent_note": null,
+      "previous": 6.0
+     },
+     "medium": {
+      "absolute_change": -1.0,
+      "current": 1.0,
+      "direction": "changed",
+      "percent_change": -50.0,
+      "percent_note": null,
+      "previous": 2.0
+     }
+    }
+   }
+  },
+  "regressions": [
+   {
+    "current": 4.5,
+    "detail": "Average complexity rose from 3 to 4.5 (+50.0%)",
+    "id": "project:average_complexity",
+    "metric": "average_complexity",
+    "previous": 3.0,
+    "scope": "project",
+    "severity": "high",
+    "title": "Average complexity rose"
+   },
+   {
+    "current": 41.0,
+    "detail": "Average risk score rose from 30 to 41 (+36.7%)",
+    "id": "project:average_risk_score",
+    "metric": "average_risk_score",
+    "previous": 30.0,
+    "scope": "project",
+    "severity": "high",
+    "title": "Average risk score rose"
+   },
+   {
+    "current": 30.0,
+    "detail": "Documentation score fell from 40 to 30 (-25.0%)",
+    "id": "project:documentation_score",
+    "metric": "documentation_score",
+    "previous": 40.0,
+    "scope": "project",
+    "severity": "high",
+    "title": "Documentation score fell"
+   },
+   {
+    "current": 60.0,
+    "detail": "Project health score fell from 70 to 60 (-14.3%)",
+    "id": "project:health_score",
+    "metric": "health_score",
+    "previous": 70.0,
+    "scope": "project",
+    "severity": "high",
+    "title": "Project health score fell"
+   },
+   {
+    "current": 3.0,
+    "detail": "High + critical risk modules rose from 0 to 3",
+    "id": "project:high_risk_modules",
+    "metric": "high_risk_modules",
+    "previous": 0.0,
+    "scope": "project",
+    "severity": "high",
+    "title": "High + critical risk modules rose"
+   },
+   {
+    "detail": "Added with risk level CRITICAL",
+    "id": "added:app/brand_new.py",
+    "language": "python",
+    "path": "app/brand_new.py",
+    "rules": [
+     "new_high_risk_file"
+    ],
+    "scope": "file",
+    "severity": "high",
+    "title": "New high-risk file app/brand_new.py"
+   },
+   {
+    "detail": "Total complexity rose from 10 to 30 (+200.0%); Most complex function rose from 4 to 12 (+200.0%); Risk score rose from 20 to 48 (+140.0%); Risk level rose from LOW to MEDIUM",
+    "id": "file:app/hot.py",
+    "language": "python",
+    "path": "app/hot.py",
+    "rules": [
+     "complexity_total",
+     "complexity_maximum",
+     "risk_score",
+     "risk_level"
+    ],
+    "scope": "file",
+    "severity": "high",
+    "title": "app/hot.py regressed"
+   },
+   {
+    "detail": "Risk score rose from 55 to 65 (+18.2%); Risk level rose from MEDIUM to HIGH",
+    "id": "file:app/risky.py",
+    "language": "python",
+    "path": "app/risky.py",
+    "rules": [
+     "risk_score",
+     "risk_level"
+    ],
+    "scope": "file",
+    "severity": "high",
+    "title": "app/risky.py regressed"
+   },
+   {
+    "current": 64.0,
+    "detail": "Average maintainability fell from 70 to 64 (-8.6%)",
+    "id": "project:average_maintainability",
+    "metric": "average_maintainability",
+    "previous": 70.0,
+    "scope": "project",
+    "severity": "medium",
+    "title": "Average maintainability fell"
+   },
+   {
+    "current": 7.0,
+    "detail": "Duplication rose from 4 to 7 (+75.0%)",
+    "id": "project:duplication_percentage",
+    "metric": "duplication_percentage",
+    "previous": 4.0,
+    "scope": "project",
+    "severity": "medium",
+    "title": "Duplication rose"
+   },
+   {
+    "detail": "Added with risk level HIGH",
+    "id": "added:svc/Api.java",
+    "language": "java",
+    "path": "svc/Api.java",
+    "rules": [
+     "new_high_risk_file"
+    ],
+    "scope": "file",
+    "severity": "medium",
+    "title": "New high-risk file svc/Api.java"
+   },
+   {
+    "detail": "Coupling rose from 2 to 6 (+200.0%)",
+    "id": "file:app/tight.py",
+    "language": "python",
+    "path": "app/tight.py",
+    "rules": [
+     "coupling"
+    ],
+    "scope": "file",
+    "severity": "medium",
+    "title": "app/tight.py regressed"
+   },
+   {
+    "detail": "A frontend API call with no matching backend endpoint was found in the new version.",
+    "evidence": [
+     {
+      "detail": "POST /api/missing",
+      "file": "frontend/api.js",
+      "line": 2,
+      "side": "frontend"
+     }
+    ],
+    "id": "arch:unmatched:POST /api/missing",
+    "scope": "architecture",
+    "severity": "medium",
+    "title": "New potential integration issue: POST /api/missing"
+   },
+   {
+    "detail": "No frontend consumer was found for this endpoint in the new version (other clients may use it).",
+    "evidence": [
+     {
+      "detail": "DELETE /api/users/{id}",
+      "file": "backend/main.py",
+      "line": 9,
+      "side": "backend"
+     }
+    ],
+    "id": "arch:unused:DELETE /api/users/{id}",
+    "scope": "architecture",
+    "severity": "low",
+    "title": "Newly potentially unused endpoint: DELETE /api/users/{id}"
+   }
+  ],
+  "rules": {
+   "file": [
+    {
+     "higher_is_better": false,
+     "id": "complexity_total",
+     "label": "Total complexity",
+     "metric": "complexity_total",
+     "min_abs": 5,
+     "min_pct": 20.0
+    },
+    {
+     "higher_is_better": false,
+     "id": "complexity_maximum",
+     "label": "Most complex function",
+     "metric": "complexity_maximum",
+     "min_abs": 5
+    },
+    {
+     "higher_is_better": true,
+     "id": "maintainability_index",
+     "label": "Maintainability index",
+     "metric": "maintainability_index",
+     "min_abs": 5.0
+    },
+    {
+     "higher_is_better": false,
+     "id": "coupling",
+     "label": "Coupling",
+     "metric": "coupling",
+     "min_abs": 3
+    },
+    {
+     "higher_is_better": false,
+     "id": "cohesion",
+     "label": "Cohesion (LCOM1, lower is better)",
+     "metric": "cohesion",
+     "min_abs": 3.0
+    },
+    {
+     "higher_is_better": false,
+     "id": "duplication_percentage",
+     "label": "Duplication",
+     "metric": "duplication_percentage",
+     "min_abs": 10.0
+    },
+    {
+     "higher_is_better": false,
+     "id": "risk_score",
+     "label": "Risk score",
+     "metric": "risk_score",
+     "min_abs": 10.0
+    }
+   ],
+   "notes": [
+    "A change is significant only when it meets the minimum absolute change and, where listed, the minimum percentage change.",
+    "A file is 'unchanged' only when its stored content hash is identical; 'unverified' means no tracked metric changed but no hash proves it.",
+    "Percentage change is not defined when the previous value is missing or 0."
+   ],
+   "project": {
+    "average_complexity": {
+     "higher_is_better": false,
+     "label": "Average complexity",
+     "min_abs": 0.5,
+     "min_pct": 10.0
+    },
+    "average_maintainability": {
+     "higher_is_better": true,
+     "label": "Average maintainability",
+     "min_abs": 5.0
+    },
+    "average_risk_score": {
+     "higher_is_better": false,
+     "label": "Average risk score",
+     "min_abs": 5.0
+    },
+    "documentation_score": {
+     "higher_is_better": true,
+     "label": "Documentation score",
+     "min_abs": 5.0
+    },
+    "duplication_percentage": {
+     "higher_is_better": false,
+     "label": "Duplication",
+     "min_abs": 2.0
+    },
+    "health_score": {
+     "higher_is_better": true,
+     "label": "Project health score",
+     "min_abs": 5.0
+    },
+    "high_risk_modules": {
+     "higher_is_better": false,
+     "label": "High + critical risk modules",
+     "min_abs": 1.0
+    }
+   },
+   "risk_levels": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "CRITICAL"
+   ]
+  },
+  "schema_version": 1,
+  "uncertainty": [
+   "The previous version has content hashes for only 8 of 9 files.",
+   "The current version has content hashes for only 9 of 10 files.",
+   "1 added/removed file pair(s) look like renames or moves (1 high, 0 medium, 0 low confidence). They are still counted as added and removed files - renames cannot be confirmed from stored metrics."
+  ]
+ },
+ "identity_id": 1,
+ "project_name": "demo",
+ "reason": null,
+ "swapped": false,
+ "versions": [
+  {
+   "health_score": 70.0,
+   "health_status": "GOOD",
+   "scan_id": 11,
+   "scanned_at": "2026-10-01T10:00:00Z",
+   "version_number": 1
+  },
+  {
+   "health_score": 60.0,
+   "health_status": "GOOD",
+   "scan_id": 12,
+   "scanned_at": "2026-10-02T10:00:00Z",
+   "version_number": 2
+  }
+ ]
+}

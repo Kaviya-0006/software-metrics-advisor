@@ -1,0 +1,17 @@
+{
+ "identity_id": 2,
+ "project_name": "solo",
+ "available": false,
+ "reason": "This is the first version of the project, so there is nothing to compare yet. Upload another version (choose this project in the upload panel) to compare.",
+ "swapped": false,
+ "versions": [
+  {
+   "version_number": 1,
+   "scan_id": 11,
+   "scanned_at": "2026-10-01T10:00:00Z",
+   "health_score": 70.0,
+   "health_status": "GOOD"
+  }
+ ],
+ "comparison": null
+}
