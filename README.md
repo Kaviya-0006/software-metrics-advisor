@@ -105,7 +105,3 @@ weights, `docs/ai-advisor.md` for what the AI Advisor does (and does not
 do), and `docs/architecture.md` for the full pipeline, API surface, and
 project identity / version history (Phase 9A) and the earlier scan-history design.
 
-## Roadmap
-
-Phase 7B (PDF reports, Project Health Certificate) onward — see
-`docs/project-plan.md`.
